@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../assets/styles/bootstrap/bootstrap.min.css">
+    <link rel="stylesheet" href="../assets/styles/styles.css">
+    <title>User</title>
+    <script type="text/javascript" src="https://maps.google.com/maps/api/js?key=AIzaSyDQV0IqvZ7uyhxDCauRWpgAVgfnYu6iuAg"></script>
+    <script src="../controllers/travel/ConfirmController.js"></script>
+</head>
+<body>
+    <header class="text-center p-3">
+        <img src="../assets/images/logo.png" width="200">
+    </header>
+    <main class="p-5">
+         <label>Name:</label>
+         <input type="text" placeholder="Name" class="form-control">
+         <br>
+         <label>Last Name:</label>
+         <input type="text" placeholder="Last Name" class="form-control">
+         <br>
+         <label>Phone:</label>
+         <input type="text" placeholder="Phone" class="form-control">
+         <br>
+         <label>Email:</label>
+         <input type="email" placeholder="Email" class="form-control">
+         <br>
+         <hr>
+         <div id="map_canvas" style="height: 100vh; width: 100%; position: relative;">
+        </div>
+        <button class="btn btn-warning btn-lg btn-block">CONFIRM</button>
+        <br>
+        <button class="btn btn-danger btn-lg btn-block">CANCEL</button>
+    </main>
+    <footer>
+
+    </footer>
+    <script src="../assets/lib/jquery-3.5.1.slim.min.js"></script>
+    <script src="../assets/lib/bootstrap/bootstrap.min.js"></script>   
+</body>
+</html>

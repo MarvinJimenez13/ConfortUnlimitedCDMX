@@ -6,6 +6,23 @@ var confirmController = function($scope, $http, SessionService){
     $scope.dataUser = SessionService.tryGet("dataUser")
     $scope.dataDestination = SessionService.tryGet("dataDestination")
 
+    $scope.confirm = function(){
+      $scope.dataOrigin = {}
+      $scope.travel = {}
+
+      $scope.dataOrigin.adress = "Terminal 2, México (Lic. Benito Juárez), 15620 Ciudad de México, CDMX, México"
+      $scope.dataOrigin.lat = 19.42175874606113
+      $scope.dataOrigin.lng = -99.08012728561806
+      $scope.travel.dataUser = $scope.dataUser
+      $scope.travel.dataOrigin = $scope.dataOrigin
+      $scope.travel.dataDestination = $scope.dataDestination
+
+      $http.post('../services/Travel.php', JSON.stringify($scope.travel), {headers: {'Content-Type' : 'application/json'}})
+      .then((response)=>{
+        console.log(response)
+      })
+    }
+
     //Error Callback
     function show_error(error){
       switch(error.code) {

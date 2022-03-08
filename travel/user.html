@@ -7,25 +7,28 @@
     <link rel="stylesheet" href="../assets/styles/bootstrap/bootstrap.min.css">
     <link rel="stylesheet" href="../assets/styles/styles.css">
     <title>User</title>
+    <script src="../assets/lib/angular.js"></script>
+    <script src="../controllers/travel/UserController.js"></script>
+    <script src="../assets/lib/Session.js"></script>
 </head>
-<body>
+<body ng-app="User" ng-controller="UserController">
     <header class="text-center p-3">
         <img src="../assets/images/logo.png" width="200">
     </header>
     <main class="p-5">
          <label class="lead">Name:</label>
-         <input type="text" placeholder="Name" class="form-control">
+         <input type="text" placeholder="Name" class="form-control" ng-model="dataUser.name">
          <br>
          <label class="lead">Last Name:</label>
-         <input type="text" placeholder="Last Name" class="form-control">
+         <input type="text" placeholder="Last Name" class="form-control" ng-model="dataUser.lastName">
          <br>
          <label class="lead">Phone:</label>
-         <input type="text" placeholder="Phone" class="form-control">
+         <input type="text" placeholder="Phone" class="form-control" ng-model="dataUser.phone">
          <br>
          <label class="lead">Email:</label>
-         <input type="email" placeholder="Email" class="form-control">
+         <input type="email" placeholder="Email" class="form-control" ng-model="dataUser.email">
          <br>
-         <button class="btn btn-warning btn-lg btn-block"><a href="destination">CONTINUE</a></button>
+         <button class="btn btn-warning btn-lg btn-block" ng-click="continue()">CONTINUE</button>
     </main>
     <footer>
 

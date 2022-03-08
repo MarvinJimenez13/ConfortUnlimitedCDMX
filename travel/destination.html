@@ -7,23 +7,25 @@
     <link rel="stylesheet" href="../assets/styles/bootstrap/bootstrap.min.css">
     <link rel="stylesheet" href="../assets/styles/styles.css">
     <title>User</title>
-    <script type="text/javascript" src="https://maps.google.com/maps/api/js?key=AIzaSyDQV0IqvZ7uyhxDCauRWpgAVgfnYu6iuAg"></script>
+    <script type="text/javascript" src="https://maps.google.com/maps/api/js?key=AIzaSyDlJ7eiVJmglVBEm2xhq4mhgFsD878gEy4"></script>
+    <script src="../assets/lib/angular.js"></script>
     <script src="../controllers/travel/DestinationController.js"></script>
+    <script src="../assets/lib/Session.js"></script>
 </head>
-<body>
+<body ng-app="Destination" ng-controller="DestinationController">
     <main>
-        <div id="map_canvas" style="height: 100vh; width: 100%; position: relative;">
+        <div id="map_canvas" style="height: 100vh; width: 100%;">
         </div>
         <div class="mh-5" style="position: absolute; bottom: 0; width: 100%;">
-            <input class="ml-4 form-control" type="text" placeholder="Origin" style="width: 40%; background-color: black;">
+            <input id="origin" class="ml-4 form-control" type="text" placeholder="Origin" style="width: 40%; background-color: black; color: white;">
             <br>
-            <input class="ml-4 form-control" type="text" placeholder="Destination" style="width: 40%; background-color: black;">
+            <input id="destination" class="ml-4 form-control" type="text" placeholder="Destination" style="width: 40%; background-color: black; color: white;">
             <br>
-            <div class="row">
+            <div class="row p-2" style="margin-right: 0;">
                 <div class="col-6">
                     <button class="btn btn-danger btn-lg btn-block">CANCEL</button>
                 </div>
-                <div class="col-6">
+                <div class="col-6 float-right">
                     <button class="btn btn-warning btn-lg btn-block"><a href="confirm">CONTINUE</a></button>
                 </div>
             </div>

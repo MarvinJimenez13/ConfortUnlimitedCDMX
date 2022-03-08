@@ -7,27 +7,32 @@
     <link rel="stylesheet" href="../assets/styles/bootstrap/bootstrap.min.css">
     <link rel="stylesheet" href="../assets/styles/styles.css">
     <title>User</title>
+    <script src="../assets/lib/angular.js"></script>
     <script type="text/javascript" src="https://maps.google.com/maps/api/js?key=AIzaSyDQV0IqvZ7uyhxDCauRWpgAVgfnYu6iuAg"></script>
     <script src="../controllers/travel/ConfirmController.js"></script>
+    <script src="../assets/lib/Session.js"></script>
 </head>
-<body>
+<body ng-app="Confirm" ng-controller="ConfirmController">
     <header class="text-center p-3">
         <img src="../assets/images/logo.png" width="200">
     </header>
     <main class="p-5">
          <label>Name:</label>
-         <input type="text" placeholder="Name" class="form-control">
+         <input type="text" placeholder="Name" class="form-control" ng-model="dataUser.name">
          <br>
          <label>Last Name:</label>
-         <input type="text" placeholder="Last Name" class="form-control">
+         <input type="text" placeholder="Last Name" class="form-control" ng-model="dataUser.lastName">
          <br>
          <label>Phone:</label>
-         <input type="text" placeholder="Phone" class="form-control">
+         <input type="text" placeholder="Phone" class="form-control" ng-model="dataUser.phone">
          <br>
          <label>Email:</label>
-         <input type="email" placeholder="Email" class="form-control">
+         <input type="email" placeholder="Email" class="form-control" ng-model="dataUser.email">
          <br>
          <hr>
+         <label><b>Origin:</b> Terminal 2, México (Lic. Benito Juárez), 15620 Ciudad de México, CDMX, México</label>
+         <br>
+         <label><b>Destination:</b> {{ dataDestination.adress }}</label>
          <div id="map_canvas" style="height: 100vh; width: 100%; position: relative;">
         </div>
         <button class="btn btn-warning btn-lg btn-block">CONFIRM</button>

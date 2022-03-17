@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../assets/styles/bootstrap/bootstrap.min.css">
+    <link rel="stylesheet" href="../assets/styles/styles.css">
+    <title>Travel</title>
+    <script type="text/javascript" src="https://maps.google.com/maps/api/js?key=AIzaSyDQV0IqvZ7uyhxDCauRWpgAVgfnYu6iuAg"></script>
+    <script src="../assets/lib/angular.js"></script>
+    <script src="../assets/lib/Session.js"></script>
+    <script src="../controllers/pay/ConfirmController.js"></script>
+</head>
+<body ng-app="ConfirmPay" ng-controller="ConfirmPayController">
+    <header class="text-center p-3">
+        <img src="../assets/images/logo.png" width="200">
+    </header>
+    <main>
+        <div class="p-5">
+            <h5><b>Name: </b> Info del Viaje Escaneado</h5>
+            <br>
+            <h5><b>Last Name: </b>Info del Viaje Escaneado</h5>
+            <br>
+            <h5><b>Phone: </b> Info del Viaje Escaneado</h5>
+            <br>
+            <h5><b>Email: </b>Info del Viaje Escaneado</h5>
+            <br>
+            <hr>
+            <h5><b>Origin:</b> Terminal 2, México (Lic. Benito Juárez), 15620 Ciudad de México, CDMX, México</h5>
+            <br>
+            <h5><b>Destination:</b> Info del Viaje Escaneado</h5>
+        </div>
+         <div id="map_canvas" style="height: 100vh; width: 100%; position: relative;">
+        </div>
+        <hr>
+        <div class="p-3">
+            <h4><b>Cost:</b> $500.00</h4>
+            <br>
+            <button class="btn btn-warning btn-lg btn-block" ng-click="confirm()">CONFIRMAR VIAJE</button>
+        </div>
+    </main>
+    <script src="../assets/lib/jquery-3.5.1.slim.min.js"></script>
+    <script src="../assets/lib/bootstrap/bootstrap.min.js"></script>  
+    <!--
+    <div id="reader" style="width:100%; height: 60vh;">
+    </div>
+    <br>
+    <label>Texto de Lectura:</label>
+    <input id="texto" type="text" style="width:80%;">
+    <script src="../assets/lib/jquery-3.5.1.slim.min.js"></script>
+    <script type="text/javascript" src="../assets/lib/jsqrcode/src/grid.js"></script>
+    <script type="text/javascript" src="../assets/lib/jsqrcode/src/version.js"></script>
+    <script type="text/javascript" src="../assets/lib/jsqrcode/src/detector.js"></script>
+    <script type="text/javascript" src="../assets/lib/jsqrcode/src/formatinf.js"></script>
+    <script type="text/javascript" src="../assets/lib/jsqrcode/src/errorlevel.js"></script>
+    <script type="text/javascript" src="../assets/lib/jsqrcode/src/bitmat.js"></script>
+    <script type="text/javascript" src="../assets/lib/jsqrcode/src/datablock.js"></script>
+    <script type="text/javascript" src="../assets/lib/jsqrcode/src/bmparser.js"></script>
+    <script type="text/javascript" src="../assets/lib/jsqrcode/src/datamask.js"></script>
+    <script type="text/javascript" src="../assets/lib/jsqrcode/src/rsdecoder.js"></script>
+    <script type="text/javascript" src="../assets/lib/jsqrcode/src/gf256poly.js"></script>
+    <script type="text/javascript" src="../assets/lib/jsqrcode/src/gf256.js"></script>
+    <script type="text/javascript" src="../assets/lib/jsqrcode/src/decoder.js"></script>
+    <script type="text/javascript" src="../assets/lib/jsqrcode/src/qrcode.js"></script>
+    <script type="text/javascript" src="../assets/lib/jsqrcode/src/findpat.js"></script>
+    <script type="text/javascript" src="../assets/lib/jsqrcode/src/alignpat.js"></script>
+    <script type="text/javascript" src="../assets/lib/jsqrcode/src/databr.js"></script>
+    <script type="text/javascript" src="../assets/lib/qr.js"></script>
+    <script type="text/javascript">
+         $('#reader').html5_qrcode(function(data){
+                // do something when code is read
+                $('#texto').val(data)
+            },
+            function(error){
+                //show read errors 
+            }, function(videoError){
+                //the video stream could be opened
+            }
+        );
+        /*
+        var scanner = new Instascan.Scanner({
+            video: document.getElementById('preview'),
+            scanPeriod: 10,
+            mirror: false
+        })
+
+        Instascan.Camera.getCameras().then(function(cameras){
+            if(cameras.length > 0)
+                scanner.start(cameras[0])
+            else
+                console.log('Camaras no encontradas');
+            
+        }).catch(function(e){
+            console.log("Error");
+        })
+
+        scanner.addListener('scan', function(response){
+            console.log('Contenido:' + response);
+        })*/
+    </script>-->
+</body>
+</html>

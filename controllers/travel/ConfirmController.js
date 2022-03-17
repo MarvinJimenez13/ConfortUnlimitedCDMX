@@ -27,7 +27,7 @@ var confirmController = function($scope, $http, SessionService){
     function show_error(error){
       switch(error.code) {
            case error.PERMISSION_DENIED:
-               var my = new google.maps.LatLng(19.48074521064234, -99.1310051625);
+               var my = new google.maps.LatLng(19.42175874606113, -99.08012728561806);
                initialize(my); 
                swal("¡Oh no!", "Permiso de usuario denegado para obtener su ubicación.", "warning");
                break;

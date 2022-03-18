@@ -18,24 +18,24 @@
     </header>
     <main>
         <div class="p-5">
-            <h5><b>Name: </b> Info del Viaje Escaneado</h5>
+            <h5><b>Name: </b> {{ travel.name }}</h5>
             <br>
-            <h5><b>Last Name: </b>Info del Viaje Escaneado</h5>
+            <h5><b>Last Name: </b>{{ travel.last_name }}</h5>
             <br>
-            <h5><b>Phone: </b> Info del Viaje Escaneado</h5>
+            <h5><b>Phone: </b> {{ travel.phone }}</h5>
             <br>
-            <h5><b>Email: </b>Info del Viaje Escaneado</h5>
+            <h5><b>Email: </b>{{ travel.email }}</h5>
             <br>
             <hr>
-            <h5><b>Origin:</b> Terminal 2, México (Lic. Benito Juárez), 15620 Ciudad de México, CDMX, México</h5>
+            <h5><b>Origin:</b> {{ travel.origin }}</h5>
             <br>
-            <h5><b>Destination:</b> Info del Viaje Escaneado</h5>
+            <h5><b>Destination:</b> {{ travel.destination }}</h5>
         </div>
          <div id="map_canvas" style="height: 100vh; width: 100%; position: relative;">
         </div>
         <hr>
         <div class="p-3">
-            <h4><b>Cost:</b> $500.00</h4>
+            <h4><b>Cost:</b> ${{ travel.price }}</h4>
             <br>
             <button class="btn btn-warning btn-lg btn-block" ng-click="confirm()">CONFIRMAR VIAJE</button>
         </div>

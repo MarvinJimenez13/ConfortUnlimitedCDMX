@@ -10,11 +10,30 @@ var confirmController = function($scope, $http, SessionService){
         return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
     }
 
-    if($scope.getParameter('folio') != ""){
-
+    $scope.validateFolio = function(){
+        if($scope.getParameter('folio') != "")
+            $scope.getDataTravel($scope.getParameter('folio'))
+        else
+            console.log('Al lobby prro');
     }
 
-    
+    $scope.getDataTravel = function(folio){
+        $http.get('../services/Pay.php?getDataTravel=true&folio=' + folio)
+        .then(function(response){
+            if(response.status == 200){
+                console.log(response.data);
+                $scope.travel = {}
+                $scope.travel = response.data;
+                  
+                validateNavigator()
+            }else if(response.status == 204){
+                alert("Folio no encontrado, al lobby.")
+            }else{
+                alert('Ocurrio un error, intente de nuevo.')
+            }
+        })
+    }
+
     //Error Callback
     function show_error(error){
         switch(error.code) {
@@ -41,7 +60,7 @@ var confirmController = function($scope, $http, SessionService){
                   position.coords.latitude; 
                   position.coords.longitude; 
               
-                  var myLatlng = new google.maps.LatLng(19.42175874606113, -99.08012728561806);
+                  var myLatlng = new google.maps.LatLng($scope.travel.origin_lat, $scope.travel.origin_lng);
                   initialize(myLatlng);  
               },  show_error);
           }else
@@ -62,12 +81,14 @@ var confirmController = function($scope, $http, SessionService){
           var directionsService = new google.maps.DirectionsService();
           var directionsDisplay = new google.maps.DirectionsRenderer({ polylineOptions: { strokeColor: "#000000" } });
           directionsDisplay.setMap(map);
-  
+
+          var destinationLatLng = new google.maps.LatLng($scope.travel.destination_lat, $scope.travel.destination_lng);
+
           directionsService.route({
               origin: myPos,
               destination: {
-                lat: $scope.dataDestination.lat,
-                lng: $scope.dataDestination.lng
+                lat: destinationLatLng.lat(),
+                lng: destinationLatLng.lng()
               },
               travelMode: 'DRIVING'
             }, function (response, status) {
@@ -78,8 +99,8 @@ var confirmController = function($scope, $http, SessionService){
               }
             });
       }
-  
-      validateNavigator()
+
+      $scope.validateFolio()
 
 }
 

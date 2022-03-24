@@ -5,6 +5,17 @@ include_once 'models/Travel.php';
 
 class PayController{
 
+    public function confirm($postdata){
+        $controladorConexion = new DBController();
+        $conexion = $controladorConexion->getConexion();
+
+        $consulta = $conexion->query("UPDATE travels SET status = true WHERE folio = '$postdata->folio'");
+        if($consulta)
+            http_response_code(200);
+        else
+            http_response_code(204);
+    }
+
     public function getDataTravel($folio){
         $controladorConexion = new DBController();
         $conexion = $controladorConexion->getConexion();

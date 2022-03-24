@@ -1,8 +1,11 @@
-var confirmApp = angular.module("ConfirmPay", ['Session']);
+var confirmApp = angular.module("MatchMod", ['Session']);
 
-var confirmController = function($scope, $http, SessionService){
+var matchController = function($scope, $http, SessionService){
     var map;
     $scope.folio;
+    $scope.matchDriver = {}
+    $scope.driver = {}
+    $scope.travel = {}
     
     $scope.getParameter = function(name) {
         name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
@@ -11,18 +14,30 @@ var confirmController = function($scope, $http, SessionService){
         return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
     }
 
-    $scope.confirm = function(){
-        $scope.confirmData = {}
-        $scope.confirmData.folio = $scope.folio;
-        $http.post('../services/Pay.php?confirm=true', JSON.stringify($scope.confirmData), {headers: {'Content-Type':'application/json'}})
-        .then((response)=>{
+    $scope.match = function(){
+        $scope.match = {}
+        $scope.match.driver = $scope.driver
+        $scope.match.travel = $scope.travel
+        $http.post('../services/Moderator.php?match=true', JSON.stringify($scope.match), {headers : {'Content-Type' : 'application/json'}})
+        .then((response) =>{
             if(response.status == 200){
-                alert("Viaje confirmado")
+                alert("Match realizado!")
+                window.location.href = "match?folio=" + $scope.folio
             }
         })
     }
 
-    $scope.validateFolio = function(){
+    $scope.check = function(){
+        $http.get('../services/Moderator.php?check=true&plate=' + $scope.matchDriver.plate)
+        .then((response)=>{
+            if(response.status == 200){
+                $scope.driver = response.data
+                $('#modalDriver').modal('show')
+            }
+        })
+    }
+
+    $scope.checkFolio = function(){
         if($scope.getParameter('folio') != "")
             $scope.getDataTravel($scope.getParameter('folio'))
         else
@@ -31,13 +46,10 @@ var confirmController = function($scope, $http, SessionService){
 
     $scope.getDataTravel = function(folio){
         $scope.folio = folio;
-        $http.get('../services/Pay.php?getDataTravel=true&folio=' + folio)
+        $http.get('../services/Pay.php?getDataTravel=true&folio=' + $scope.folio)
         .then(function(response){
             if(response.status == 200){
-                console.log(response.data);
-                $scope.travel = {}
-                $scope.travel = response.data;
-                  
+                $scope.travel = response.data;    
                 validateNavigator()
             }else if(response.status == 204){
                 alert("Folio no encontrado, al lobby.")
@@ -113,8 +125,8 @@ var confirmController = function($scope, $http, SessionService){
             });
       }
 
-      $scope.validateFolio()
+      $scope.checkFolio()
 
 }
 
-confirmApp.controller("ConfirmPayController", ['$scope', '$http', 'SessionService', confirmController]);
+confirmApp.controller("MatchModController", ['$scope', '$http', 'SessionService', matchController]);

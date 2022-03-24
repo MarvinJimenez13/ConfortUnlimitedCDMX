@@ -19,7 +19,7 @@ var confirmController = function($scope, $http, SessionService){
 
       $http.post('../services/Travel.php', JSON.stringify($scope.travel), {headers: {'Content-Type' : 'application/json'}})
       .then((response)=>{
-        console.log(response)
+          alert("QR Creado")
       })
     }
 
